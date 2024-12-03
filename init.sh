@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-#  Use it with this in MacOS Terminal (not iTerm2 if already insalled, as iTerm will be quit ;-) ) 
-#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/tuxpeople/mac-dev-playbook/master/init.sh)"
+#  Use it with this in MacOS Terminal (not iTerm2 if already installed, as iTerm will be quit ;-) ) 
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/biofer76/mac-dev-playbook/master/init.sh)"
 #
 # set -e
 
@@ -43,7 +43,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 step "Preparing system"
 echo "- Creating Workspace folder"
-mkdir $SOURCE_DIR
+mkdir -p $SOURCE_DIR
 
 echo " - Cloning Repo"
 git clone https://github.com/biofer76/mac-dev-playbook.git $SOURCE_DIR || exit 1
