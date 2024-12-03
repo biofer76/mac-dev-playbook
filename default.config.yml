@@ -66,6 +66,7 @@ homebrew_cask_apps:
   - affinity-photo
   - alfred
   - chromedriver
+  - cursor
   - dbeaver-community
   - docker
   - dropbox
@@ -75,7 +76,7 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - google-drive
   - iterm2
-  - logi-options+
+  - logi-options-plus
   - notion
   - openvpn-connect
   - postman
