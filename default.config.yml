@@ -25,7 +25,7 @@ sudoers_custom_config: ''
 dotfiles_repo: https://github.com/biofer76/dotfiles.git
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_version: main
-dotfiles_repo_local_destination: ~/Workspace/GitHub/biofer76/dotfiles
+dotfiles_repo_local_destination: ~/Workspace/github/biofer76/dotfiles
 dotfiles_files:
   - .zshrc
   - .gitignore
