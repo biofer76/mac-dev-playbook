@@ -45,6 +45,7 @@ homebrew_installed_packages:
   - iperf
   - jq
   - k9s
+  - kubectl
   - nmap
   - npm
   - node
