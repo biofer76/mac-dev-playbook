@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - jq
   - k9s
   - kubectl
+  - mysql-client
   - nmap
   - npm
   - node
