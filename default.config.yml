@@ -28,10 +28,9 @@ dotfiles_repo_version: main
 dotfiles_repo_local_destination: ~/Workspace/GitHub/biofer76/dotfiles
 dotfiles_files:
   - .zshrc
-  # - .gitignore
-  # - .inputrc
+  - .gitignore
+  - .gitconfig
   - .osx
-  # - .vimrc
 
 homebrew_installed_packages:
   - autoconf
@@ -126,7 +125,6 @@ sublime_package_control:
   - "GitHub Flavored Markdown Preview"
   - "Jinja2"
   - "Package Control"
-  - "PHP-Twig"
   - "Pretty JSON"
   - "SublimeLinter"
   - "SublimeLinter-contrib-yamllint"

@@ -5,6 +5,8 @@
 #
 # set -e
 
+SOURCE_DIR=~/Workspace/github/biofer76/mac-dev-playbook
+
 _step_counter=0
 function step() {
         _step_counter=$(( _step_counter + 1 ))
@@ -40,53 +42,22 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 [ ! -d "/Library/Developer/CommandLineTools" ] && installcli
 
 step "Preparing system"
-echo " - Cloning Repo"
-mkdir -p /tmp/git || exit 1
-git clone https://github.com/biofer76/mac-dev-playbook.git /tmp/git || exit 1
+echo "- Creating Workspace folder"
+mkdir $SOURCE_DIR
 
-# echo " - Downloading important files"
-# cd ~
-# IFS=$'\n'
-# for FILE in Library/Mobile\ Documents/com~apple~CloudDocs/Dateien/Allgemein/dotfiles/filelists/filelist.txt Library/Mobile\ Documents/com~apple~CloudDocs/Dateien/Allgemein/dotfiles/filelists/folderlist.txt
-# do
-#   while [ ! -f "${FILE}" ]
-#   do
-#     echo Checking for "${FILE}"
-#     brctl download ${FILE}
-#     sleep 10
-#   done
-# done
-# for FILE in $(cat Library/Mobile\ Documents/com~apple~CloudDocs/Dateien/Allgemein/dotfiles/filelists/filelist.txt)
-# do
-#   while [ ! -f "${FILE}" ]
-#   do
-#     echo Checking for "${FILE}"
-#     brctl download ${FILE}
-#     sleep 10
-#   done
-# done
-# for DIR in $(cat Library/Mobile\ Documents/com~apple~CloudDocs/Dateien/Allgemein/dotfiles/filelists/folderlist.txt)
-# do
-#   while [ ! -d "${DIR}" ]
-#   do
-#     echo Checking for "${DIR}"
-#     brctl download ${DIR}
-#     sleep 10
-#   done
-# done
-# unset IFS
-# ${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/Dateien/Allgemein/bin/add_vault_password
+echo " - Cloning Repo"
+git clone https://github.com/biofer76/mac-dev-playbook.git $SOURCE_DIR || exit 1
 
 echo " - Upgrading PIP"
 /Library/Developer/CommandLineTools/usr/bin/pip3.9 install --upgrade pip || exit 1
 
-echo " - Installing Ansible"
-/Library/Developer/CommandLineTools/usr/bin/pip3.9 install --user --requirement /tmp/git/requirements.txt || exit 1
+echo " - Installing Ansible and required Python packages"
+/Library/Developer/CommandLineTools/usr/bin/pip3.9 install --user --requirement $SOURCE_DIR/requirements.txt || exit 1
 PATH="/usr/local/bin:$(/Library/Developer/CommandLineTools/usr/bin/python3 -m site --user-base)/bin:$PATH"
 export PATH
 
 echo " - Installing Ansible requirements"
-ansible-galaxy install -r /tmp/git/requirements.yml || exit 1
+ansible-galaxy install -r $SOURCE_DIR/requirements.yml || exit 1
 
 if [ -n "${newhostname}" ]; then
   sudo scutil --set HostName ${newhostname}
@@ -97,9 +68,10 @@ else
   newhostname="$(hostname)"
 fi
 
-step "Starting Ansible run"
-echo "If something went wrong, start this step again with:"
-echo '     cd /tmp/git'
-echo '     export newhostname=<HOSTNAME>'
-echo '     ansible-playbook plays/full.yml -i inventories -l ${newhostname} --extra-vars "newhostname=${newhostname}" --connection=local'
-# ansible-playbook main.yml --ask-become-pass
+step "Switch to source folder"
+cd $SOURCE_DIR
+
+echo 'Running full installation'
+echo '  ansible-playbook main.yml --ask-become-pass'
+echo 'Running a specific set of tagged tasks'
+echo '  ansible-playbook main.yml -K --tags "dotfiles,homebrew"'
