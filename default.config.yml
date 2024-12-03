@@ -36,7 +36,6 @@ homebrew_installed_packages:
   - autoconf
   - bash-completion
   - bat
-  - blackhole-2ch
   - doxygen
   - ffmpeg
   - gettext
