@@ -22,64 +22,76 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: https://github.com/biofer76/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_repo_version: main
+dotfiles_repo_local_destination: ~/Workspace/GitHub/biofer76/dotfiles
 dotfiles_files:
   - .zshrc
-  - .gitignore
-  - .inputrc
+  # - .gitignore
+  # - .inputrc
   - .osx
-  - .vimrc
+  # - .vimrc
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
   - autoconf
   - bash-completion
+  - bat
+  - blackhole-2ch
   - doxygen
+  - ffmeg
   - gettext
-  - gifsicle
-  - git
   - gh
   - go
   - gpg
-  - httpie
   - iperf
-  - libevent
-  - sqlite
+  - jq
+  - k9s
   - nmap
+  - npm
   - node
-  - nvm
-  - php
   - ssh-copy-id
-  - cowsay
-  - readline
   - openssl
+  - pnpm
   - pv
   - wget
-  - wrk
+  - siege
+  - yarn
   - zsh-history-substring-search
 
 homebrew_taps: []
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - 1password
+  - affinity-photo
+  - alfred
   - chromedriver
+  - dbeaver-community
   - docker
   - dropbox
   - firefox
+  - gas-mask
   - google-chrome
-  - handbrake
-  - licecap
-  - sequel-ace
+  - google-cloud-sdk
+  - google-drive
+  - iterm2
+  - logi-options+
+  - notion
+  - openvpn-connect
+  - postman
+  - rectangle
+  - setapp
   - slack
   - sublime-text
-  - transmit
+  - visual-studio-code
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
-mas_email: ""
-mas_password: ""
+mas_installed_apps:
+  - { id: 1006087419, name: "SnippetsLab" }
+
+# mas_email: ""
+# mas_password: ""
 
 osx_script: "~/.osx --no-restart"
 
