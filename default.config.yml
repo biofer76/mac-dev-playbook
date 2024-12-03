@@ -38,7 +38,7 @@ homebrew_installed_packages:
   - bat
   - blackhole-2ch
   - doxygen
-  - ffmeg
+  - ffmpeg
   - gettext
   - gh
   - go
