@@ -71,6 +71,7 @@ homebrew_cask_apps:
   - dbeaver-community
   - docker
   - dropbox
+  - elgato-camera-hub
   - firefox
   - gas-mask
   - google-chrome
