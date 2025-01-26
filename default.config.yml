@@ -49,6 +49,7 @@ homebrew_installed_packages:
   - mysql-client
   - nmap
   - npm
+  - nvm
   - node
   - ssh-copy-id
   - openssl
